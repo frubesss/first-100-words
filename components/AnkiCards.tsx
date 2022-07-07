@@ -10,6 +10,7 @@ const Container = styled.div`
 `;
 
 const StyledCard = styled(TinderCard)`
+  height: 200px;
   width: 200px;
   position: absolute;
   padding: 32px;
@@ -34,53 +35,63 @@ const cardColors = [
 ];
 
 function AnkiCards() {
-  const [isViewAnswer, setIsViewAnswer] = useState(false);
-
-  const swiped = () => {};
-
-  const outOfFrame = () => {};
-
-  const cards = [
+  const [cards, setCards] = useState([
     {
       question: "Le House",
       description: "femme",
       image: "🏘️",
       answer: "The House",
+      isViewingAnswer: false,
     },
     {
-      question: "Le Dog",
+      question: "Le Chat",
       description: "femme",
       image: "🏘️",
-      answer: "Chat",
+      answer: "The Cat",
+      isViewingAnswer: false,
     },
-  ];
+  ]);
 
-  function handleClick() {
-    setIsViewAnswer(!isViewAnswer);
+  const swiped = () => {};
+
+  const outOfFrame = () => {};
+
+  function handleClick(selectedCardQuestion: string) {
+    setCards(
+      cards.map((card) =>
+        card.question === selectedCardQuestion
+          ? { ...card, isViewingAnswer: true }
+          : card
+      )
+    );
   }
 
   return (
-    <Container>
-      {cards.map((card) => (
-        // @ts-ignore
-        <StyledCard
-          key={card.question}
-          onSwipe={() => swiped()}
-          onCardLeftScreen={() => outOfFrame()}
-          color={cardColors[Math.floor(Math.random() * cardColors.length)]}
-        >
-          {isViewAnswer ? (
-            <p>{card.answer}</p>
-          ) : (
-            <>
-              <h2>{card.question}</h2>
-              <p>{card.image}</p>
-              <p>{card.description}</p>
-            </>
-          )}
-        </StyledCard>
-      ))}
-    </Container>
+    <>
+      <Container>
+        {cards.map((card, index) => (
+          // @ts-ignore
+          <StyledCard
+            preventSwipe={["up", "down"]}
+            key={card.question}
+            onSwipe={() => swiped()}
+            onCardLeftScreen={() => outOfFrame()}
+            color={cardColors[Math.floor(Math.random() * cardColors.length)]}
+          >
+            {card.isViewingAnswer ? (
+              <p>{card.answer}</p>
+            ) : (
+              <>
+                <h2>{card.question}</h2>
+                <p>{card.image}</p>
+                <p>{card.description}</p>
+              </>
+            )}
+            <button onClick={() => handleClick(card.question)}>Flip!</button>
+          </StyledCard>
+        ))}
+      </Container>
+    </>
   );
 }
 
