@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TinderCard from "react-tinder-card";
 import styled from "styled-components";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 const Container = styled.div`
   display: flex;
@@ -22,61 +23,84 @@ const StyledCard = styled(TinderCard)`
   text-align: center;
 `;
 
-const cardColors = [
-  "#d6d8f0",
-  "#ff9f8c",
-  "#3de5b2",
-  "#f8f473",
-  "#fff",
-  "#cccbd4",
-  "#ff826a",
-  "#3de5b2",
-  "#ede5e3",
-];
-
 function AnkiCards() {
   const [cards, setCards] = useState([
     {
-      question: "Le House",
+      question: "le",
       description: "femme",
       image: "🏘️",
-      answer: "The House",
+      answer: "him, her, it, them",
       isViewingAnswer: false,
+      color: "#d6d8f0",
     },
     {
-      question: "Le Chat",
+      question: "de",
       description: "femme",
       image: "🏘️",
-      answer: "The Cat",
+      answer: "of, from",
       isViewingAnswer: false,
+      color: "#3de5b2",
+    },
+    {
+      question: "un",
+      description: "femme",
+      image: "🏘️",
+      answer: "one",
+      isViewingAnswer: false,
+      color: "#3de5b2",
+    },
+    {
+      question: "a",
+      description: "femme",
+      image: "🏘️",
+      answer: "to, at, in",
+      isViewingAnswer: false,
+      color: "#3de5b2",
     },
   ]);
 
-  const swiped = () => {};
+  const [progress, setProgress] = useState(1);
 
-  const outOfFrame = () => {};
+  const onCardLeftScreen = () => {
+    setProgress((previousState) => previousState + 1);
+  };
 
   function handleClick(selectedCardQuestion: string) {
     setCards(
       cards.map((card) =>
         card.question === selectedCardQuestion
-          ? { ...card, isViewingAnswer: true }
+          ? { ...card, isViewingAnswer: !card.isViewingAnswer }
           : card
       )
     );
   }
 
+  function handleSpeechClick(selectedCardQuestion: string) {
+    const message = new SpeechSynthesisUtterance();
+    message.text = selectedCardQuestion;
+    message.lang = "fr";
+    window.speechSynthesis.speak(message);
+  }
+
   return (
     <>
+      <p>
+        {progress}/{cards.length + 1}
+      </p>
+      <ProgressBar
+        isLabelVisible={false}
+        completed={progress}
+        maxCompleted={cards.length + 1}
+      />
       <Container>
-        {cards.map((card, index) => (
+        {cards.map((card) => (
           // @ts-ignore
           <StyledCard
-            preventSwipe={["up", "down"]}
+            flickOnSwipe={true}
             key={card.question}
-            onSwipe={() => swiped()}
-            onCardLeftScreen={() => outOfFrame()}
-            color={cardColors[Math.floor(Math.random() * cardColors.length)]}
+            preventSwipe={["up", "down"]}
+            onCardLeftScreen={() => onCardLeftScreen()}
+            color={card.color}
           >
             {card.isViewingAnswer ? (
               <p>{card.answer}</p>
@@ -85,9 +109,14 @@ function AnkiCards() {
                 <h2>{card.question}</h2>
                 <p>{card.image}</p>
                 <p>{card.description}</p>
+                <button onClick={() => handleSpeechClick(card.question)}>
+                  Play!
+                </button>
+                <button onClick={() => handleClick(card.question)}>
+                  Flip!
+                </button>
               </>
             )}
-            <button onClick={() => handleClick(card.question)}>Flip!</button>
           </StyledCard>
         ))}
       </Container>

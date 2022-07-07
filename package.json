@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ramonak/react-progress-bar": "^5.0.1",
     "next": "12.2.0",
     "react": "18.2.0",
-    "react-card-flip": "^1.1.5",
     "react-dom": "18.2.0",
+    "react-sweet-progress": "^1.1.2",
     "react-tinder-card": "^1.4.5",
     "styled-components": "^5.3.5"
   },
