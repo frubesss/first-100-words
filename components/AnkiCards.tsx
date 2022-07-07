@@ -3,24 +3,21 @@ import TinderCard from "react-tinder-card";
 import styled from "styled-components";
 
 const Container = styled.div`
-  flex: 1;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  height: 300px;
 `;
 
-const StyledTinderCard = styled(TinderCard)`
-  position: fixed;
-`;
-
-const StyledCard = styled.div`
+const StyledCard = styled(TinderCard)`
+  width: 200px;
+  position: absolute;
   padding: 32px;
-  min-height: 300px;
   border-radius: 10px;
   cursor: grab;
-  background: ${(props) => props.color};
+  background: ${(props: { color: string }) => props.color};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-align: center;
 `;
 
@@ -66,27 +63,23 @@ function AnkiCards() {
     <Container>
       {cards.map((card) => (
         // @ts-ignore
-        <StyledTinderCard
+        <StyledCard
           key={card.question}
           onSwipe={() => swiped()}
           onCardLeftScreen={() => outOfFrame()}
+          color={cardColors[Math.floor(Math.random() * cardColors.length)]}
         >
-          <StyledCard
-            color={cardColors[Math.floor(Math.random() * cardColors.length)]}
-          >
-            {isViewAnswer ? (
-              <p>{card.answer}</p>
-            ) : (
-              <>
-                <h2>{card.question}</h2>
-                <p>{card.image}</p>
-                <p>{card.description}</p>
-              </>
-            )}
-          </StyledCard>
-        </StyledTinderCard>
+          {isViewAnswer ? (
+            <p>{card.answer}</p>
+          ) : (
+            <>
+              <h2>{card.question}</h2>
+              <p>{card.image}</p>
+              <p>{card.description}</p>
+            </>
+          )}
+        </StyledCard>
       ))}
-      <button onClick={handleClick}>Flip</button>
     </Container>
   );
 }
