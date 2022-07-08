@@ -119,27 +119,26 @@ function AnkiCards() {
       </ProgressContainer>
       <Container>
         {cards.map((card, index) => (
-          <>
-            <StyledCard
-              key={card.question}
-              preventSwipe={["up", "down"]}
-              onCardLeftScreen={() => onCardLeftScreen(index)}
-              color={card.color}
-            >
-              {card.isViewingAnswer ? (
-                <>
-                  <FlagEmoji>🇬🇧</FlagEmoji>
-                  <p>{card.answer}</p>
-                </>
-              ) : (
-                <>
-                  <FlagEmoji>🇫🇷</FlagEmoji>
-                  <Question>{card.question}</Question>
-                  <Description>({card.description})</Description>
-                </>
-              )}
-            </StyledCard>
-          </>
+          // @ts-ignore
+          <StyledCard
+            key={card.question}
+            preventSwipe={["up", "down"]}
+            onCardLeftScreen={() => onCardLeftScreen(index)}
+            color={card.color}
+          >
+            {card.isViewingAnswer ? (
+              <>
+                <FlagEmoji>🇬🇧</FlagEmoji>
+                <p>{card.answer}</p>
+              </>
+            ) : (
+              <>
+                <FlagEmoji>🇫🇷</FlagEmoji>
+                <Question>{card.question}</Question>
+                <Description>({card.description})</Description>
+              </>
+            )}
+          </StyledCard>
         ))}
         <FlipButton onClick={handleFlipCardClick}>Flip!</FlipButton>
       </Container>
