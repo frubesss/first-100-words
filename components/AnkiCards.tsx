@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Logo from "public/logo.png";
 import { frenchCards } from "../cards";
 import React, { useState } from "react";
 import TinderCard from "react-tinder-card";
@@ -7,6 +6,7 @@ import styled from "styled-components";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { AiFillSound } from "react-icons/ai";
 import FranceFlag from "../public/franceFlag.png";
+import UnionJackFlag from "../public/unionJackFlag.png";
 
 const Container = styled.div`
   display: flex;
@@ -36,6 +36,14 @@ const Question = styled.div`
   line-height: 51px;
   text-align: center;
   margin-bottom: 8px;
+`;
+
+const Answer = styled.div`
+  text-transform: capitalize;
+  color: white;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
 `;
 
 const Description = styled.div`
@@ -104,8 +112,25 @@ const QuestionContainer = styled.div`
   align-items: center;
 `;
 
-const FranceFlagContainer = styled.div`
+const FlagContainer = styled.div`
   margin-bottom: 8px;
+`;
+
+const AnswerFlagContainer = styled.div`
+  margin-bottom: 48px;
+`;
+
+const Pronustiation = styled.div`
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: white;
+`;
+
+const AnswerTextContainer = styled.div`
+  margin-bottom: 16px;
 `;
 
 function AnkiCards() {
@@ -163,20 +188,32 @@ function AnkiCards() {
             color={card.color}
           >
             {card.isViewingAnswer ? (
-              <>
-                <FlagEmoji>🇬🇧</FlagEmoji>
-                <p>{card.answer}</p>
-              </>
+              <QuestionContainer>
+                <AnswerFlagContainer>
+                  <Image
+                    src={UnionJackFlag}
+                    alt="Union jack flag"
+                    width={42}
+                    height={42}
+                  />
+                </AnswerFlagContainer>
+                <AnswerTextContainer>
+                  <Answer>{card.answer}</Answer>
+                  <Pronustiation>(det.)</Pronustiation>
+                </AnswerTextContainer>
+                <Answer>{card.answer}</Answer>
+                <Pronustiation>(pron.)</Pronustiation>
+              </QuestionContainer>
             ) : (
               <QuestionContainer>
-                <FranceFlagContainer>
+                <FlagContainer>
                   <Image
                     src={FranceFlag}
                     alt="French flag"
                     width={42}
                     height={42}
                   />
-                </FranceFlagContainer>
+                </FlagContainer>
                 <SoundButtonContainer>
                   <SoundButton onClick={() => handleSpeechClick(card.question)}>
                     <SoundIcon />
