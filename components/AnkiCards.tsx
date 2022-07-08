@@ -32,7 +32,6 @@ const Question = styled.div`
   color: white;
   font-weight: 500;
   font-size: 42px;
-  line-height: 51px;
   text-align: center;
   margin-bottom: 8px;
 `;
@@ -41,14 +40,11 @@ const Answer = styled.div`
   color: white;
   font-weight: 500;
   font-size: 22px;
-  line-height: 27px;
 `;
 
 const Description = styled.div`
-  font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 24px;
   text-align: center;
   color: white;
 `;
@@ -74,10 +70,8 @@ const FlipButton = styled.button`
   text-decoration: none;
   cursor: pointer;
   font-family: "Fredoka", serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  line-height: 22px;
   position: absolute;
   width: 290px;
   margin-top: 600px;
@@ -104,12 +98,6 @@ const SoundIcon = styled(FaVolumeUp)`
   font-size: 28px;
 `;
 
-const QuestionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const FlagContainer = styled.div`
   margin-bottom: 8px;
 `;
@@ -119,7 +107,6 @@ const AnswerFlagContainer = styled.div`
 `;
 
 const Pronustiation = styled.div`
-  font-style: normal;
   font-weight: 300;
   font-size: 16px;
   line-height: 19px;
@@ -186,7 +173,7 @@ function AnkiCards() {
             color={card.color}
           >
             {card.isViewingAnswer ? (
-              <QuestionContainer>
+              <>
                 <AnswerFlagContainer>
                   <Image
                     src={UnionJackFlag}
@@ -202,9 +189,9 @@ function AnkiCards() {
                   ) : null}
                 </AnswerTextContainer>
                 <Answer>{card.answer2}</Answer>
-              </QuestionContainer>
+              </>
             ) : (
-              <QuestionContainer>
+              <>
                 <FlagContainer>
                   <Image
                     src={FranceFlag}
@@ -225,7 +212,7 @@ function AnkiCards() {
                 {card.questionDescription ? (
                   <Description>({card.questionDescription})</Description>
                 ) : null}
-              </QuestionContainer>
+              </>
             )}
           </StyledCard>
         ))}
