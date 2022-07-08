@@ -178,6 +178,13 @@ export const frenchCards: Card[] = [
     color: colors[0],
   },
   {
+    question: "alright our kid",
+    questionDescription: "greeting",
+    answer1: "saying hello to a friend",
+    isViewingAnswer: false,
+    color: colors[0],
+  },
+  {
     question: "se",
     questionDescription: "pronoun",
     answer1: "oneself, himself, herself, itself, themselves",
