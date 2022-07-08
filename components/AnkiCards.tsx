@@ -106,7 +106,7 @@ const AnswerFlagContainer = styled.div`
   margin-bottom: 48px;
 `;
 
-const Pronustiation = styled.div`
+const Description1 = styled.div`
   font-weight: 300;
   font-size: 16px;
   line-height: 19px;
@@ -185,7 +185,7 @@ function AnkiCards() {
                 <AnswerTextContainer>
                   <Answer>{card.answer1}</Answer>
                   {card.answerDescription1 ? (
-                    <Pronustiation>({card.answerDescription1})</Pronustiation>
+                    <Description1>({card.answerDescription1})</Description1>
                   ) : null}
                 </AnswerTextContainer>
                 <Answer>{card.answer2}</Answer>

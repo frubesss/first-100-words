@@ -10,6 +10,51 @@ export type Card = {
 
 const colors = ["#7753F8", "#FFCC00", "#FE8400"];
 
+export const signLanguageCards = [
+  {
+    question: "/../public/thankYou.gif",
+    answer: "Thank You",
+    isViewingAnswer: false,
+    color: colors[0],
+  },
+  {
+    question: "/../public/happy.gif",
+    answer: "Happy",
+    isViewingAnswer: false,
+    color: colors[1],
+  },
+  {
+    question: "/../public/wonderful.gif",
+    answer: "Wonderful",
+    isViewingAnswer: false,
+    color: colors[2],
+  },
+  {
+    question: "/../public/loveYou.gif",
+    answer: "Love You",
+    isViewingAnswer: false,
+    color: colors[0],
+  },
+  {
+    question: "/../public/howAreYou.gif",
+    answer: "How are you?",
+    isViewingAnswer: false,
+    color: colors[1],
+  },
+  {
+    question: "/../public/sorry.gif",
+    answer: "Sorry",
+    isViewingAnswer: false,
+    color: colors[2],
+  },
+  {
+    question: "/../public/yes.gif",
+    answer: "Yes",
+    isViewingAnswer: false,
+    color: colors[0],
+  },
+];
+
 export const frenchCards: Card[] = [
   {
     question: "le",
