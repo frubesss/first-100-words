@@ -12,43 +12,43 @@ const colors = ["#7753F8", "#FFCC00", "#FE8400"];
 
 export const signLanguageCards = [
   {
-    question: "/../public/thankYou.gif",
+    question: "/thankYou.gif",
     answer: "Thank You",
     isViewingAnswer: false,
     color: colors[0],
   },
   {
-    question: "/../public/happy.gif",
+    question: "/happy.gif",
     answer: "Happy",
     isViewingAnswer: false,
     color: colors[1],
   },
   {
-    question: "/../public/wonderful.gif",
+    question: "/wonderful.gif",
     answer: "Wonderful",
     isViewingAnswer: false,
     color: colors[2],
   },
   {
-    question: "/../public/loveYou.gif",
+    question: "/loveYou.gif",
     answer: "Love You",
     isViewingAnswer: false,
     color: colors[0],
   },
   {
-    question: "/../public/howAreYou.gif",
+    question: "/howAreYou.gif",
     answer: "How are you?",
     isViewingAnswer: false,
     color: colors[1],
   },
   {
-    question: "/../public/sorry.gif",
+    question: "/sorry.gif",
     answer: "Sorry",
     isViewingAnswer: false,
     color: colors[2],
   },
   {
-    question: "/../public/yes.gif",
+    question: "/yes.gif",
     answer: "Yes",
     isViewingAnswer: false,
     color: colors[0],
