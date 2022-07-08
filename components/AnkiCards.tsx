@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
 import styled from "styled-components";
 import ProgressBar from "@ramonak/react-progress-bar";
+import { AiFillSound } from "react-icons/ai";
 
 const Container = styled.div`
   display: flex;
@@ -76,6 +77,26 @@ const FlipButton = styled.button`
   margin-top: 600px;
 `;
 
+const SoundButton = styled.button`
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+`;
+
+const SoundIcon = styled(AiFillSound)`
+  color: white;
+  font-size: 32px;
+`;
+
+const QuestionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 function AnkiCards() {
   const [cardInView, setCardInView] = useState(frenchCards.length - 1);
   const [cards, setCards] = useState(frenchCards);
@@ -136,12 +157,13 @@ function AnkiCards() {
                 <p>{card.answer}</p>
               </>
             ) : (
-              <>
-                <FlagEmoji>🇫🇷</FlagEmoji>
-
+              <QuestionContainer>
+                <SoundButton onClick={() => handleSpeechClick(card.question)}>
+                  <SoundIcon />
+                </SoundButton>
                 <Question>{card.question}</Question>
                 <Description>({card.description})</Description>
-              </>
+              </QuestionContainer>
             )}
           </StyledCard>
         ))}
