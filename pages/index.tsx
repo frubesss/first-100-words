@@ -26,10 +26,10 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>First 100</title>
+        <title>First 100 - Learn the first 100 words</title>
         <meta
           name="description"
-          content="First 100 - Learn the first 100 words of a lanaguage"
+          content="First 100 - Learn the first 100 words of a language"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
