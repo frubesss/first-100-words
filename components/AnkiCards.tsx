@@ -1,9 +1,12 @@
+import Image from "next/image";
+import Logo from "public/logo.png";
 import { frenchCards } from "../cards";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import TinderCard from "react-tinder-card";
 import styled from "styled-components";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { AiFillSound } from "react-icons/ai";
+import FranceFlag from "../public/franceFlag.png";
 
 const Container = styled.div`
   display: flex;
@@ -77,24 +80,32 @@ const FlipButton = styled.button`
   margin-top: 600px;
 `;
 
+const SoundButtonContainer = styled.div`
+  margin-bottom: 32px;
+`;
+
 const SoundButton = styled.button`
   border: none;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   cursor: pointer;
 `;
 
 const SoundIcon = styled(AiFillSound)`
   color: white;
-  font-size: 32px;
+  font-size: 28px;
 `;
 
 const QuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const FranceFlagContainer = styled.div`
+  margin-bottom: 8px;
 `;
 
 function AnkiCards() {
@@ -158,9 +169,19 @@ function AnkiCards() {
               </>
             ) : (
               <QuestionContainer>
-                <SoundButton onClick={() => handleSpeechClick(card.question)}>
-                  <SoundIcon />
-                </SoundButton>
+                <FranceFlagContainer>
+                  <Image
+                    src={FranceFlag}
+                    alt="French flag"
+                    width={42}
+                    height={42}
+                  />
+                </FranceFlagContainer>
+                <SoundButtonContainer>
+                  <SoundButton onClick={() => handleSpeechClick(card.question)}>
+                    <SoundIcon />
+                  </SoundButton>
+                </SoundButtonContainer>
                 <Question>{card.question}</Question>
                 <Description>({card.description})</Description>
               </QuestionContainer>
