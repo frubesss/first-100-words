@@ -86,6 +86,10 @@ function AnkiCards() {
     setCardInView(index - 1);
   };
 
+  const onSwipe = (index: number) => {
+    setCardInView(index - 1);
+  };
+
   function handleFlipCardClick() {
     setCards(
       cards.map((card, index) =>
@@ -121,8 +125,8 @@ function AnkiCards() {
         {cards.map((card, index) => (
           // @ts-ignore
           <StyledCard
+            onSwipe={() => onSwipe(index)}
             key={card.question}
-            preventSwipe={["up", "down"]}
             onCardLeftScreen={() => onCardLeftScreen(index)}
             color={card.color}
           >
@@ -134,6 +138,7 @@ function AnkiCards() {
             ) : (
               <>
                 <FlagEmoji>🇫🇷</FlagEmoji>
+
                 <Question>{card.question}</Question>
                 <Description>({card.description})</Description>
               </>
