@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import TinderCard from "react-tinder-card";
 import styled from "styled-components";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { AiFillSound } from "react-icons/ai";
+import { FaVolumeUp } from "react-icons/fa";
 import FranceFlag from "../public/franceFlag.png";
 import UnionJackFlag from "../public/unionJackFlag.png";
 
@@ -29,7 +29,6 @@ const StyledCard = styled(TinderCard)`
 `;
 
 const Question = styled.div`
-  text-transform: capitalize;
   color: white;
   font-weight: 500;
   font-size: 42px;
@@ -39,7 +38,6 @@ const Question = styled.div`
 `;
 
 const Answer = styled.div`
-  text-transform: capitalize;
   color: white;
   font-weight: 500;
   font-size: 22px;
@@ -52,11 +50,8 @@ const Description = styled.div`
   font-size: 20px;
   line-height: 24px;
   text-align: center;
-  text-transform: capitalize;
   color: white;
 `;
-
-const FlagEmoji = styled.div``;
 
 const ProgressCounter = styled.div`
   color: white;
@@ -90,6 +85,9 @@ const FlipButton = styled.button`
 
 const SoundButtonContainer = styled.div`
   margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const SoundButton = styled.button`
@@ -101,7 +99,7 @@ const SoundButton = styled.button`
   cursor: pointer;
 `;
 
-const SoundIcon = styled(AiFillSound)`
+const SoundIcon = styled(FaVolumeUp)`
   color: white;
   font-size: 28px;
 `;
@@ -198,11 +196,12 @@ function AnkiCards() {
                   />
                 </AnswerFlagContainer>
                 <AnswerTextContainer>
-                  <Answer>{card.answer}</Answer>
-                  <Pronustiation>(det.)</Pronustiation>
+                  <Answer>{card.answer1}</Answer>
+                  {card.answerDescription1 ? (
+                    <Pronustiation>({card.answerDescription1})</Pronustiation>
+                  ) : null}
                 </AnswerTextContainer>
-                <Answer>{card.answer}</Answer>
-                <Pronustiation>(pron.)</Pronustiation>
+                <Answer>{card.answer2}</Answer>
               </QuestionContainer>
             ) : (
               <QuestionContainer>
@@ -215,12 +214,17 @@ function AnkiCards() {
                   />
                 </FlagContainer>
                 <SoundButtonContainer>
-                  <SoundButton onClick={() => handleSpeechClick(card.question)}>
+                  <SoundButton
+                    onTouchStart={() => handleSpeechClick(card.question)}
+                    onClick={() => handleSpeechClick(card.question)}
+                  >
                     <SoundIcon />
                   </SoundButton>
                 </SoundButtonContainer>
                 <Question>{card.question}</Question>
-                <Description>({card.description})</Description>
+                {card.questionDescription ? (
+                  <Description>({card.questionDescription})</Description>
+                ) : null}
               </QuestionContainer>
             )}
           </StyledCard>
