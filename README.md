@@ -1,6 +1,6 @@
 # first 100 words
 
-This was created for [TotallyMoneys](https://www.totallymoney.com/) HackDay 2021.
+This was created for [TotallyMoneys](https://www.totallymoney.com/) HackDay 2022.
  
 first 100 words is a language learning web application designed to introduce users to the first 100 words of a new language. Leveraging the well-known Anki card format, users can learn at their own pace by swiping through flashcards and engaging with interactive elements.
 
