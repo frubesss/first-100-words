@@ -2,10 +2,7 @@
 
 This was created for [TotallyMoneys](https://www.totallymoney.com/) HackDay 2021.
  
-The premise being that anybody who wants to learn about TotallyMoney and its 
-employees can access the application and view facts in a flash card format when they have a bit of downtime.
-
-It can be amended however for the cards to display whatever you like.
+first 100 words is a language learning web application designed to introduce users to the first 100 words of a new language. Leveraging the well-known Anki card format, users can learn at their own pace by swiping through flashcards and engaging with interactive elements.
 
 ## Development
 
