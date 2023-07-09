@@ -4,8 +4,6 @@ This was created for [TotallyMoneys](https://www.totallymoney.com/) HackDay 2022
  
 first 100 words is a language learning web application designed to introduce users to the first 100 words of a new language. Leveraging the well-known Anki card format, users can learn at their own pace by swiping through flashcards and engaging with interactive elements.
 
-## Development
-
 ## Author
 
 👤 Craig Robertson
@@ -14,14 +12,7 @@ first 100 words is a language learning web application designed to introduce use
 * Github: [@frubesss](https://github.com/frubesss)
 * Email: robetson.cra@gmail.com
 
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
 ## Inspiration
 
-## Technology
+- [Tim Ferris - How to Learn Any Language in 3 Months](https://tim.blog/2009/01/20/learning-language/)
+- [Anki](https://en.wikipedia.org/wiki/Anki_(software))
